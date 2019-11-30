@@ -1,9 +1,7 @@
-dist: trusty
 language: cpp
+dist: xenial
+os: linux
 
-before_install:
-  - mkdir build
-  - sudo apt update
 addons:
   apt:
     sources:
@@ -13,7 +11,11 @@ addons:
       - libboost-all-dev
       - libdlib-dev
       - libopenblas-dev
-install:
+
+before_script:
+  - mkdir build
+  - sudo apt update
+
 
 script:
   - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7
@@ -21,8 +23,9 @@ script:
   - cmake ..
   - cmake --build .
   - cmake --build . --target package
+
 deploy:
-    provider: script
-    skip_cleanup: true
-    script:
+  provider: script
+  skip_cleanup: true
+  script:
   - curl -T 15_homework-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -udvdemon:$BINTRAY_API_KEY "https://api.bintray.com/content/ddzuba/otus-cpp/15_homework/$TRAVIS_BUILD_NUMBER/15_homework-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
