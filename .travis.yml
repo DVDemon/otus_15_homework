@@ -1,12 +1,6 @@
-dist: xenial
+dist: trusty
 language: cpp
-env:
-  global:
-    - VERSION_MAJOR=1
-    - VERSION_MINOR=0
-branches:
-  only:
-    - task15
+
 before_script:
   - mkdir build
   - sudo apt update
@@ -28,7 +22,5 @@ script:
 deploy:
     provider: script
     skip_cleanup: true
-    on:
-      branch: task15
     script:
   - curl -T 15_homework-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -udvdemon:$BINTRAY_API_KEY "https://api.bintray.com/content/ddzuba/otus-cpp/15_homework/$TRAVIS_BUILD_NUMBER/15_homework-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
