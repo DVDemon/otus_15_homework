@@ -1,7 +1,7 @@
 dist: trusty
 language: cpp
 
-before_script:
+before_install:
   - mkdir build
   - sudo apt update
 addons:
@@ -13,6 +13,8 @@ addons:
       - libboost-all-dev
       - libdlib-dev
       - libopenblas-dev
+install:
+
 script:
   - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7
   - cd build
