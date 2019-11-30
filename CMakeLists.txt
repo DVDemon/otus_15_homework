@@ -6,7 +6,7 @@ else()
  project(15_homework VERSION 0.0.3)
 endif()
 
-SET(CMAKE_CXX_COMPILER /usr/local/Cellar/gcc/9.2.0_2/bin/c++-9)
+#SET(CMAKE_CXX_COMPILER /usr/local/Cellar/gcc/9.2.0_2/bin/c++-9)
 
 find_package(Threads)
 
