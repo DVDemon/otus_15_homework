@@ -11,7 +11,7 @@ endif()
 find_package(Threads)
 
 
-add_executable(kkmeans kkmeans_ex.cpp)
+add_executable(kkmeans main.cpp example.txt kkmeans_ex.txt)
 
 set_target_properties(kkmeans PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED ON)
 
@@ -20,6 +20,7 @@ target_link_libraries(kkmeans PRIVATE ${CMAKE_THREAD_LIBS_INIT} dlib lapack blas
 
 install(TARGETS kkmeans RUNTIME DESTINATION bin)
 
+set(RESOURCE_FILES example.txt kkmeans_ex.txt)
 set(CPACK_GENERATOR DEB)
 set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
